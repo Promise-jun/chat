@@ -1,0 +1,17 @@
+[
+	{
+		"crowdId": 10001,
+		"crowdName": "粉丝群1号群",
+		"crowdPic": "http://img0.imgtn.bdimg.com/it/u=1514462847,3204306169&fm=200&gp=0.jpg"
+	},
+	{
+		"crowdId": 10002,
+		"crowdName": "粉丝群2号群",
+		"crowdPic": "http://img2.imgtn.bdimg.com/it/u=3547713062,2351307340&fm=200&gp=0.jpg"
+	},
+	{
+		"crowdId": 10003,
+		"crowdName": "粉丝群3号群",
+		"crowdPic": "http://img1.imgtn.bdimg.com/it/u=3453683605,4187005420&fm=27&gp=0.jpg"
+	}
+]
