@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>web聊天</title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/simpleAlert.css">
 </head>
 <body>
 	<section>
@@ -19,7 +20,7 @@
 			</div>
 			<div class="search_box">
 				<input type="text" class="search_inp" name="search_inp" placeholder="搜索联系人">
-				<a href="javascript:;" class="add_btn" title="添加联系人"></a>
+				<a href="javascript:toggleModal($('.add_modal'));" class="add_btn" title="添加联系人"></a>
 				<ul class="serach_list">
 					<!-- 搜索内容 -->
 				</ul>
@@ -59,6 +60,24 @@
 				<aside>
 					<ul id="chatCont">
 						<!-- 聊天内容 -->
+						<li class="chat_list">
+							<img class="chat_head" src="http://img3.imgtn.bdimg.com/it/u=3462862480,2265157239&fm=27&gp=0.jpg">
+							<div class="chat_text"><span>今天要安排其他事情，不接单了</span></div>
+						</li>
+						<li class="chat_list myself">
+							<img class="chat_head" src="http://img5.imgtn.bdimg.com/it/u=3623408756,2981161507&fm=200&gp=0.jpg">
+							<div class="chat_text"><span>好的，老师其他时间有安排吗？好的，老师其他时间有安排吗？</span></div>
+						</li>
+						<li class="chat_list">
+							<img class="chat_head" src="http://img3.imgtn.bdimg.com/it/u=3462862480,2265157239&fm=27&gp=0.jpg">
+							<div class="chat_text"><span>我晚上看一下时间表再和你说吧</span></div>
+						</li>
+						<li class="chat_list myself">
+							<img class="chat_head" src="http://img5.imgtn.bdimg.com/it/u=3623408756,2981161507&fm=200&gp=0.jpg">
+							<div class="chat_pic">
+								<img src="http://img5.imgtn.bdimg.com/it/u=2869031647,3499077470&fm=27&gp=0.jpg">
+							</div>
+						</li>
 					</ul>
 					<div id="chatInput">
 						
@@ -69,10 +88,27 @@
 	</section>
 
 	<div class="add_modal">
-		<div class="modal_box"></div>
+		<div class="modal_box">
+			<div class="top">
+				<p class="title">添加联系人<a href="javascript:toggleModal($('.add_modal'));"></a></p>
+				<div class="search_user">
+					<label for="userId">ID</label>
+					<input type="text" name="user_id" id="userId">
+					<label for="userIphone">手机号</label>
+					<input type="text" name="user_iphone" id="userIphone">
+					<label for="userName">手机号</label>
+					<input type="text" name="user_name" id="userName">
+					<a href="javascript:selectUsers();">查找</a>
+				</div>
+			</div>
+			<div class="cont" id="addUsers">
+				<!-- 搜索用户的结果 -->
+			</div>
+		</div>
 	</div>
 	
 	<script type="text/javascript" src="js/lib/jquery/jquery.js"></script>
+	<script type="text/javascript" src="js/simpleAlert.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//计算高度
@@ -148,8 +184,43 @@
 			$('.serach_list').slideUp(200);
 		}
 
+		//查找联系人
+		function selectUsers() {
+			var selectId = $('#userId').val(),
+				selectIphone = $('#userIphone').val(),
+				selectName = $('#userName').val();
+
+			$.ajax({
+				type: "get",
+				url: 'mock/search_result.json',
+				dataType: 'json'
+			}).done(function(res) {
+				var divs = all.addUsers(res);
+				$('#addUsers').html(divs);
+			})
+			// window.location = 'index1.html';
+		}
+		//点击加好友
+		function addUserFn($obj) {
+			console.log($obj);
+			toggleModal($('.add_modal'));
+			var onlyChoseAlert = simpleAlert({
+                "content":"添加好友申请已经发送给对方啦！",
+                "buttons":{
+                    "确定":function () {
+                        onlyChoseAlert.close();
+                    }
+                }
+            })
+		}
+
+		//显示隐藏弹窗
+		function toggleModal($obj) {
+			$obj.fadeToggle(200);
+		}
+
 		var all = {
-			// 取数据
+			// tab取数据
 			getData: function(index, url) {
 				var _this = this;
 				$.ajax({
@@ -203,6 +274,21 @@
 					str += '<li class="card2" crowdId='+item.crowdId+'>';
 					str += '<div class="head"><img src="'+item.crowdPic+'"></div>';
 					str += '<div class="name">'+item.crowdName+'</div></li>';
+				})
+				return str;
+			},
+			// 添加联系人
+			addUsers: function(data) {
+				var str = "";
+				$.each(data, function(index, item) {
+					str += '<div class="user_card"><div class="user_info"><div class="head"><img src="'+item.headPic+'"></div>';
+					str += '<div class="right"><p class="name">'+item.userName+'</p><p class="id">ID：'+item.userId+'</p></div></div>';
+					str += '<p class="phone">手机号：'+item.phone+'</p><p class="time">注册时间：'+item.time+'</p>';
+					str += '<a href="javascript:;" onclick="addUserFn($(this))">加好友</a>';
+					if (item.type == 1) {
+						str += '<span class="label">咨询师</span>';
+					}
+					str += '</div>';
 				})
 				return str;
 			}
