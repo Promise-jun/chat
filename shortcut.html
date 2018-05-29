@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>web聊天-快捷语设置</title>
+	<link rel="stylesheet" type="text/css" href="css/shortcut.css">
+	<link rel="stylesheet" type="text/css" href="css/simpleAlert.css">
+</head>
+<body>
+	<div class="top_box">
+		<div class="nav"><img src="img/logo_top.png"></div>
+	</div>
+
+	<table cellpadding="0">
+		<thead>
+			<tr>
+				<th>批量</th>
+				<th>所属分类</th>
+				<th>内容</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="batch">
+					<input type="checkbox" name="">
+				</td>
+				<td class="classify">介绍用语</td>
+				<td class="content">你好，我是客服12032</td>
+				<td class="operate">
+					<a href="javascript:;" class="edit" title="编辑" onclick="editFn($(this))"></a>
+					<a href="javascript:;" class="del" title="删除" onclick="singleDel($(this))"></a>
+				</td>
+			</tr>
+			<tr>
+				<td class="batch">
+					<input type="checkbox" name="">
+				</td>
+				<td class="classify">欢迎语</td>
+				<td class="content">亲，欢迎咨询哦！</td>
+				<td class="operate">
+					<a href="javascript:;" class="edit" title="编辑" onclick="editFn($(this))"></a>
+					<a href="javascript:;" class="del" title="删除" onclick="singleDel($(this))"></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="foot_box">
+		<div class="left">
+			<a href="javascript:;" class="add" title="新增"></a>
+			<a href="javascript:;" class="minus" title="删除勾选的"></a>
+		</div>
+		<div class="page_box">
+			<ul id="pageCont"></ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/lib/jquery/jquery.js"></script>
+	<script type="text/javascript" src="js/jqPaginator.min.js"></script>
+	<script type="text/javascript" src="js/simpleAlert.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			// 分页
+			$('#pageCont').jqPaginator({
+			    totalPages: 100,
+			    visiblePages: 5,
+			    currentPage: 1,
+		        prev: '<li class="prev"><a href="javascript:;">上一页</a></li>',
+		        next: '<li class="next"><a href="javascript:;">下一页</a></li>',
+		        page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
+			    onPageChange: function (num, type) {
+			        console.log(num)
+			    }
+			});
+		})
+
+		//编辑
+		function editFn($obj) {
+			var dblChoseAlert = simpleAlert({
+                "title":"编辑快捷语",
+                "content":"<input type='text' />",
+                "buttons":{
+                    "确定":function () {
+                    	$obj.parents('tr').remove();
+                        dblChoseAlert.close();
+                    },
+                    "取消":function () {
+                        dblChoseAlert.close();
+                    }
+                }
+            })
+		}
+
+		//删除单个
+		function singleDel($obj) {
+			var dblChoseAlert = simpleAlert({
+                "title":"删除提示",
+                "content":"确定要删除该快捷语吗？",
+                "buttons":{
+                    "确定":function () {
+                    	$obj.parents('tr').remove();
+                        dblChoseAlert.close();
+                    },
+                    "取消":function () {
+                        dblChoseAlert.close();
+                    }
+                }
+            })
+		}
+	</script>
+</body>
+</html>

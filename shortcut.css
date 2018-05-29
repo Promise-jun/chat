@@ -1,0 +1,232 @@
+/* ==== css reset ==== */
+
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "Lantinghei SC", "PingFang SC", "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+select,
+input {
+    vertical-align: middle;
+}
+
+select,
+input,
+textarea {
+    font-size: 12px;
+    margin: 0;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    outline-style: none;
+    -webkit-appearance: none;
+}
+
+textarea {
+    resize: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+body {
+    /*font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,Arial,PingFang SC,"Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;*/
+    font-family: PingFangSC-Medium, "Lantinghei SC", "PingFang SC", "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #F9F9F9; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*快捷语页面*/
+.top_box {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.top_box .nav {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+.top_box .nav img {
+    display: block;
+    padding-top: 10px;
+}
+
+table {
+    width: 1200px;
+    margin: 78px auto 0;
+}
+table td, table th {
+
+}
+thead {
+    width: 100%;
+    line-height: 60px;
+    background-image: linear-gradient(50deg, #FB894B 0%, #F85863 100%);
+    border-radius: 8px 8px 0 0;
+    font-family: PingFangSC-Medium;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+tbody tr {
+    width: 100%;
+    line-height: 50px;
+    font-family: PingFangSC-Medium;
+    font-size: 14px;
+    color: #303030;
+}
+tbody tr:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+tbody .batch,
+tbody .classify,
+tbody .operate {
+    text-align: center;
+}
+tbody .content {
+    padding: 0 30px;
+}
+.edit {
+    margin-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: url('../img/icon_modification.png') no-repeat center;
+    background-size: contain;
+}
+.del {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: url('../img/icon_delete.png') no-repeat center;
+    background-size: contain;
+}
+tbody tr td:not(:last-child) {
+    border-right: 1px solid #D7D7D7;
+}
+
+.foot_box {
+    width: 1200px;
+    height: 30px;
+    margin: 24px auto;
+}
+.foot_box .left {
+    float: left;
+    font-size: 0;
+}
+.foot_box .left a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+.foot_box .add {
+    margin-right: 16px;
+    background: url('../img/icon_add.png') no-repeat center;
+    background-size: contain;
+}
+.foot_box .minus {
+    background: url('../img/icon_subtract.png') no-repeat center;
+    background-size: contain;
+}
+.page_box {
+    float: right;
+    height: 30px;
+}
+.page_box li {
+    float: left;
+    margin-left: 10px;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #ECECEC;
+    cursor: pointer;
+}
+.page_box li.active,
+.page_box li:hover {
+    background: #FD7A60;
+}
+.page_box li.active a,
+.page_box li:hover a {
+    color: #fff;
+}
+.page_box li a {
+    font-size: 12px;
+    color: #696969;
+}

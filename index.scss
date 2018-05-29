@@ -332,7 +332,7 @@ section {
     &>article {
         margin-left: 340px;
         height: 100%;
-        & .title {
+        &>.title {
             height: 60px;
             line-height: 60px;
             background-image: linear-gradient(50deg, #FB894B 0%, #F85863 100%);
@@ -356,8 +356,92 @@ section {
             float: right;
             width: 240px;
             height: 100%;
-            background: pink;
             border-radius: 0 8px 8px 0;
+            border-left: 1px solid #D7D7D7;
+            & .remarks {
+                padding-top: 60px;
+                height: 50%;
+                & .title {
+                    padding: 20px 20px 10px;
+                    font-family: PingFangSC-Medium;
+                    font-size: 12px;
+                    color: #919191;
+                }
+                & .remark_input {
+                    height: 100%;
+                    & textarea {
+                        width: 212px;
+                        margin: 0 14px;
+                        height: 60%;
+                        background: #E4EAF4;
+                        border-radius: 4px;
+                        border: 0;
+                        padding: 12px;
+                        font-size: 12px;
+                        color: #303030;
+                        line-height: 20px;
+                    }
+                    & .save {
+                        float: right;
+                        margin-top: 10px;
+                        margin-right: 14px;
+                        width: 78px;
+                        height: 24px;
+                        line-height: 24px;
+                        text-align: center;
+                        background: #FFFFFF;
+                        border: 1px solid #D7D7D7;
+                        border-radius: 4px;
+                        font-family: PingFangSC-Medium;
+                        font-size: 12px;
+                        color: #303030;
+                    }
+                }
+            }
+            & .shortcut_lang {
+                border-top: 1px solid #D7D7D7;
+                height: 50%;
+                overflow-y: auto;
+                & .title {
+                    padding: 14px 20px;
+                    font-family: PingFangSC-Medium;
+                    font-size: 12px;
+                    color: #696969;
+                    & a {
+                        float: right;
+                        width: 18px;
+                        height: 18px;
+                        background: url('../img/icon_setting.png') no-repeat center;
+                        background-size: contain;
+                    }
+                }
+                & .shortcut_card {
+                    padding: 0 20px;
+                    overflow: hidden;
+                    & .shortcut_name {
+                        display: inline-block;
+                        padding-left: 20px;
+                        background: url('../img/icon_arrows_nor.png') no-repeat left center;
+                        background-size: 10px auto;
+                        margin-bottom: 14px;
+                        font-size: 12px;
+                        color: #303030;
+                    }
+                    & .open_shortcut {
+                        background: url('../img/icon_arrows_down.png') no-repeat left center;
+                        background-size: 10px auto;
+                    }
+                    & .shortcut_list {
+                        display: none;
+                    }
+                    & .shortcut_link {
+                        cursor: pointer;
+                        margin-bottom: 14px;
+                        font-size: 12px;
+                        color: #303030;
+                    }
+                }
+            }
         }
     }
 }
@@ -415,7 +499,51 @@ section {
 }
 #chatInput {
     height: 22.2%;
-    background: gray;
+    border-top: 1px solid #D7D7D7;
+    position: relative;
+    & .fast_btns {
+        padding: 20px 30px 10px;
+        font-size: 0;
+        & a {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 16px;
+        }
+        & .emoji_btn {
+            background: url('../img/icon_expression.png') no-repeat center;
+            background-size: contain;
+        }
+        & .upload_pic {
+            background: url('../img/icon_photo.png') no-repeat center;
+            background-size: contain;
+        }
+    }
+    & .input_text {
+        width: 100%;
+        height: 40%;
+        border: 0;
+        background: #F8FBFF;
+        padding: 0 30px; 
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+        color: #303030;
+    }
+    & .send {
+        position: absolute;
+        right: 40px;
+        bottom: 15px;
+        width: 90px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        background: #FFFFFF;
+        border: 1px solid #D7D7D7;
+        border-radius: 8px;
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+        color: #303030;
+    }
 }
 .add_modal {
     display: none;
@@ -560,3 +688,5 @@ section {
         }
     }
 }
+
+

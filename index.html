@@ -56,31 +56,63 @@
 		<article>
 			<p class="title">咨询师杨磊</p>
 			<article>
-				<nav></nav>
+				<nav>
+					<div class="remarks">
+						<p class="title">备注</p>
+						<div class="remark_input">
+							<textarea></textarea>
+							<a href="javascript:;" class="save">保存</a>
+						</div>
+					</div>
+					<div class="shortcut_lang">
+						<p class="title">快捷语<a href="shortcut.html" title="设置快捷语"></a></p>
+						<div id="shortcutLang">
+							<div class="shortcut_card">
+								<a href="javascript:;" class="shortcut_name" onclick="toggleShortcut($(this))">欢迎语</a>
+								<ul class="shortcut_list">
+									<li class="shortcut_link">你好，我是客服123</li>
+									<li class="shortcut_link">有什么需要帮助的？</li>
+								</ul>
+							</div>
+							<div class="shortcut_card">
+								<a href="javascript:;" class="shortcut_name" onclick="toggleShortcut($(this))">介绍用语</a>
+								<ul class="shortcut_list">
+									<li class="shortcut_link">你好，我是客服123</li>
+									<li class="shortcut_link">客服12030为您服务</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
 				<aside>
 					<ul id="chatCont">
 						<!-- 聊天内容 -->
 						<li class="chat_list">
-							<img class="chat_head" src="http://img3.imgtn.bdimg.com/it/u=3462862480,2265157239&fm=27&gp=0.jpg">
+							<img class="chat_head" src="img/data/pic6.jpg">
 							<div class="chat_text"><span>今天要安排其他事情，不接单了</span></div>
 						</li>
 						<li class="chat_list myself">
-							<img class="chat_head" src="http://img5.imgtn.bdimg.com/it/u=3623408756,2981161507&fm=200&gp=0.jpg">
+							<img class="chat_head" src="img/data/pic9.jpg">
 							<div class="chat_text"><span>好的，老师其他时间有安排吗？好的，老师其他时间有安排吗？</span></div>
 						</li>
 						<li class="chat_list">
-							<img class="chat_head" src="http://img3.imgtn.bdimg.com/it/u=3462862480,2265157239&fm=27&gp=0.jpg">
+							<img class="chat_head" src="img/data/pic6.jpg">
 							<div class="chat_text"><span>我晚上看一下时间表再和你说吧</span></div>
 						</li>
 						<li class="chat_list myself">
-							<img class="chat_head" src="http://img5.imgtn.bdimg.com/it/u=3623408756,2981161507&fm=200&gp=0.jpg">
+							<img class="chat_head" src="img/data/pic9.jpg">
 							<div class="chat_pic">
-								<img src="http://img5.imgtn.bdimg.com/it/u=2869031647,3499077470&fm=27&gp=0.jpg">
+								<img src="img/data/pic5.jpg">
 							</div>
 						</li>
 					</ul>
 					<div id="chatInput">
-						
+						<p class="fast_btns">
+							<a href="javascript:;" class="emoji_btn"></a>
+							<a href="javascript:;" class="upload_pic"></a>
+						</p>
+						<textarea class="input_text"></textarea>
+						<a href="javascript:;" class="send">发送</a>
 					</div>
 				</aside>
 			</article>
@@ -176,6 +208,18 @@
 			$('.group_list').slideUp(200);
 			$obj.addClass('open_group');
 			$obj.parent().find('.group_list').slideDown(200);
+		}
+
+		//显示隐藏快捷语
+		function toggleShortcut($obj) {
+			var isOpen = $obj.hasClass('open_shortcut');
+			if (isOpen) {
+				$obj.removeClass('open_shortcut');
+				$obj.parent().find('.shortcut_list').slideUp(200);
+			} else {
+				$obj.addClass('open_shortcut');
+				$obj.parent().find('.shortcut_list').slideDown(200);
+			}
 		}
 
 		//点击搜索结果列表
